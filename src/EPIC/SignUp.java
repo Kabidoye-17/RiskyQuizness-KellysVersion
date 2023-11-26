@@ -3,7 +3,6 @@ package EPIC;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SignUp {
 
@@ -74,7 +73,6 @@ public class SignUp {
             BufferedReader reader;
             String line;
             boolean usernameExists = false;
-            int specialCharacterChecker = 0;
             int numberChecker =  0;
 
             String usernameFinal = userName.getText(); // we don't need to  convert this into a hashcode as it wil;l allow usto search for users in the login file
@@ -160,7 +158,7 @@ public class SignUp {
                 loginButton.setBackground(Color.decode("#E305AD"));
             }
         });
-        frame.setVisible(true);//making the frame visible
+        frame.setVisible(true);/**making the frame visible**/
     }
     public void formatScores(String username){
 
