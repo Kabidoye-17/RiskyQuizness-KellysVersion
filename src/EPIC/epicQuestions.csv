@@ -1,0 +1,84 @@
+Computer Science Foundation
+Easy
+Q1
+"What does the acronym B.N.F stand for?
+(a)Binary Notation Framework/(b)Backus-Naur Form/(c)Basic Network Function/(d)Boolean Naming Function
+(b)Backus-Naur Form
+Q2
+What denotes assignment/definiton in B.N.F grammar?
+(a)=:/(b):=/(c)=::/(d)::=
+(d)::=
+Intermediate
+Q1
+A Poset in which every pair of elements has both a least upper bound and a greatest lower bound is called s _______
+(a) sublattice/(b)lattice/(c)homorphism/(d)semilattice
+(b)lattice
+Q2
+A poset (𝑃,≤ ) is called a _________ if for all ,𝑏∈ 𝑃 , 𝑆𝑢𝑝 {𝑎,𝑏} exists
+(a)meet semilattice/(b)semilattice/(c)join semilattice/(d)none of these
+(c)join semilattice
+Difficult
+Q1
+Let 𝑋 be a non-empty set. Then 𝑃(𝑋) the power set of X under ⊆ satisfies which of the following properties 
+(a)Reflexivity/(b)Anti-Symmetry/(c)Transitivity/(d)All above
+(d)All above
+Q2
+homomorphism is a function that preserves ________ between two algebraic structures.
+(a) the elements/(b) the sum/(c)the colour/(d)the structure
+(d)the structure
+Discrete Mathematics
+Easy
+Q1
+What does a proposition mean?
+(a)A proposition is a declarative sentence that is either true or false but not both/(b)A proposition is a declarative sentence that is just true/(c)A proposition is a declarative sentence that is just false/(d)A proposition is a declarative sentence that is either true or false
+(a)A proposition is a declarative sentence that is either true or false but not both
+Q2
+Which one means p and q?
+(a)p↔q/(b)p∨q/(c)p∧q/(d)q→p
+(c)p∧q
+Intermediate
+Q1
+A{1,2,3,4,5,6}, B{2,4,6,8} A-B=
+(a){1,2,3,6,8}/(b){1,3,6,8,10}/(c){1,3,5}/(d){1,2,3,5}
+(c){1,3,5}
+Q2
+What is the difference between a function and a relation?
+(a)A relationship can have many outputs for a single input, but a function has a single output/(b)A relationship has only one output for a single input, but a function has multiple outputs/(c)A relationship has one input with numerous outputs, but a function has many inputs with a single output/(d)There is no difference
+(a)A relationship can have many outputs for a single input
+Difficult
+Q1
+If a relation is both symmetric and antisymmetric,what can be said about the relation
+(a)It is an equivalence relation/(b)It is a partial order/(c)It is a total order/(d)It is not possible for a relation to be both
+(b)It is a partial order
+Q2
+If A is a 3x2 matrix and B is a 2x4 matrix, what is the size of the matrix when B is multiplied by A?
+(a)3x4/(b)3x2/(c)2x2/(d)4x3
+(a)3x4
+Computer Organisation
+Easy
+Q1
+What is the name of the third level of the 'Contemporary Multilevel Machine'?
+(a)Operating system machine level/(b)Assembly language level/(c)Microarchitecture level/(d)Instruction set architecture level
+(a)Operating system machine level
+Q2
+What does ALU stand for?
+(a)Arithmetic Level Unit/(b)Arithmetic Logic Unit/(c)Assisted Level User/(d)Ancient Law User
+(b)Arithmetic Logic Unit
+Intermediate
+Q1
+Which three levels of the 'Contemporary Multilevel Machine' are numeric?
+(a)0,1,2/(b)1,2,3/(c)2,3,4/(d)3,4,5
+(b)1,2,3
+Q2
+True or False: "Translation is when each line of code must be examined and decoded before being executed"
+(a)True/(b)False/(c)/(d)
+(b)False
+Difficult
+Q1
+What is the octal equivalent of the hexadecimal 3EC?
+(a)1354/(b)2376/(c)9878/(d)9967
+(a)1354
+Q2
+What is the hexadecimal equivalent of the octal 56?
+(a)4f/(b)9a/(c)2e/(d)8c
+(c)2e
