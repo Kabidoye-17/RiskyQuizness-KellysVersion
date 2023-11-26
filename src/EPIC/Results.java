@@ -66,7 +66,7 @@ public class Results  extends questionClass{
         results_background.setIcon(new ImageIcon(resultsBg));
         Dimension size = results_background.getPreferredSize();
         results_background.setBounds(0,0,size.width,size.height);
-
+            // timed mode is the only mode wth six questions
             if (totalQuestions == 6){
                 JLabel totalValueTimed = new JLabel(); // prints the question
                 totalValueTimed.setText("Out of " + totalQuestions + " questions correct in " + formatDuration(timeElapsed)+ " ");
@@ -74,7 +74,7 @@ public class Results  extends questionClass{
                 totalValueTimed.setForeground(new Color(0x000000));
                 totalValueTimed.setBounds((screen_width / 2) - 400, (screen_height / 2) + 300, 800, 50);
                 frame.add(totalValueTimed);
-
+            // only mode to show stats due to 6 questions
                 JButton Stats = new JButton("Stats");
                 Stats.setForeground(new Color(0x0FFFFFF) );
                 Stats.setBackground(new Color(mainButtonBgHex));
@@ -85,20 +85,16 @@ public class Results  extends questionClass{
 
                 Stats.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+                        // displays user specific stats
                         Login user = new Login();
                         String username = user.getUsernameFinal();
-                        System.out.println(username);
                         Statistics statsInfo = new Statistics(username);
                         statsInfo.addScoreToStore(correctAnswers);
                         int highscore = statsInfo.findHighScore();
                         double mean = statsInfo.calculateMean();
                         int medianNum = statsInfo.calculateMedian();
-                        int median = 0;
-                        if (medianNum == -1){
-                            median = correctAnswers;
-                        }
                         double standardDeviation = statsInfo.calculateStandardDeviation();
-                        String message = "User: " + username + "\n Highscore: " + highscore +"\n Mean: " + mean + "\n Median: " + median + "\n Standard deviation: " + standardDeviation;
+                        String message = "User: " + username + "\n Highscore: " + highscore +"\n Mean: " + mean + "\n Median: " + medianNum + "\n Standard deviation: " + standardDeviation;
                         JOptionPane.showMessageDialog(frame,message);
 
 
@@ -155,6 +151,7 @@ public class Results  extends questionClass{
                     frame.getContentPane().removeAll();
                     frame.revalidate();
                     frame.repaint();
+                    // returns back to main menu of the category chosen
                     if (Category == "Computer Science Foundation"){
                         quizSubjectTemplate computerScience = new quizSubjectTemplate("Computer Science Foundation", "null", Mode,"null", "images//compSci//csfTitle.jpg", "images//compSci//compSciBg.jpg", "images//compSci//csfResults.jpg", 0x008000, 0x38B000, 0x06AD0A);
                         computerScience.modes(frame, screenSize);

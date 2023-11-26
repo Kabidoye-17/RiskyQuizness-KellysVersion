@@ -30,13 +30,7 @@ public class questionClass {
     }
     // Getter and Setter
 
-    public String getCategory() {
-        return Category;
-    }
 
-    public void setCategory(String category) {
-        Category = category;
-    }
 
     public String getDifficulty() {
         return Difficulty;
@@ -54,9 +48,6 @@ public class questionClass {
         Question = question;
     }
 
-    public String getMode() {
-        return Mode;
-    }
 
     public void setMode(String mode) {
         Mode = mode;
@@ -66,65 +57,33 @@ public class questionClass {
         return chosenQuestion;
     }
 
-    public void setChosenQuestion(String chosenQuestion) {
-        this.chosenQuestion = chosenQuestion;
-    }
 
     public String[] getQuestionOptions() {
         return questionOptions;
     }
 
-    public void setQuestionOptions(String[] questionOptions) {
-        this.questionOptions = questionOptions;
-    }
 
     public String getQuestionAnswer() {
         return questionAnswer;
     }
-
-    public void setQuestionAnswer(String questionAnswer) {
-        this.questionAnswer = questionAnswer;
-    }
-
-    public boolean isCategoryfound() {
-        return categoryfound;
-    }
-
-    public void setCategoryfound(boolean categoryfound) {
-        this.categoryfound = categoryfound;
-    }
-
-    public boolean isDifficultyfound() {
-        return difficultyfound;
-    }
-
-    public void setDifficultyfound(boolean difficultyfound) {
-        this.difficultyfound = difficultyfound;
-    }
-
-    public boolean isQuestionfound() {
-        return questionfound;
-    }
-
-    public void setQuestionfound(boolean questionfound) {
-        this.questionfound = questionfound;
-    }
-
-
 
     // Methods
     public void retrieveQuestion(){
         try {
             reader = new BufferedReader(new FileReader(file));
             while ((line = reader.readLine()) != null){
+                //finds the right Category
                 if (line.equals(Category)){
                     categoryfound = true;
                 }
+                //finds the right difficulty under the category
                 if (categoryfound && line.equals(Difficulty)){
                     difficultyfound = true;
                 }
+                // find the right questio
                 if (categoryfound && difficultyfound && line.equals(Question)){
                     questionfound = true;
+                    // store the questions information
                     chosenQuestion = reader.readLine();
                     line = reader.readLine();
                     questionOptions = line.split("/");
