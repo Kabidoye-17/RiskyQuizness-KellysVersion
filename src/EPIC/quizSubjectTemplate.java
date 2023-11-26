@@ -13,9 +13,7 @@ public class quizSubjectTemplate extends questionClass {
     //// Attributes ////
     String Category;
     String Mode;
-    int timedResults = 0;
-    int leveledResults = 0;
-    int randomResults = 0;
+    int Results = 0;
     boolean isTimed = false;
     boolean isRandom = false;
     boolean isLeveled = false;
@@ -30,11 +28,8 @@ public class quizSubjectTemplate extends questionClass {
     Results resultsInfo;
 
 
-    //// Constructor ////
-
     public quizSubjectTemplate(String Category, String Difficulty,String Mode, String Question, String titleBg, String runningBg, String resultsBg, int borderHex, int mainButtonBgHex, int alternateButtonBgHex) {
         super(Category, Difficulty, Mode, Question);
-        this.Mode = Mode;
         this.Category = Category;
         this.titleBg = titleBg;
         this.runningBg = runningBg;
@@ -48,11 +43,6 @@ public class quizSubjectTemplate extends questionClass {
 
 
     }
-
-
-    //// Getters and Setters ////
-
-    //// Methods ////
     public void modes(JFrame frame, Dimension screenSize) {
 
 // this is the first screen that appears once the button "computer organisation button is clicked
@@ -92,6 +82,7 @@ public class quizSubjectTemplate extends questionClass {
                 int rand_level = rand.nextInt(3) + 1;
                 int rand_question = rand.nextInt(2) + 1;
 
+                //picks a random difficulty
                 switch (rand_level) {
                     case 1:
                         questionStore.setDifficulty("Easy");
@@ -103,6 +94,7 @@ public class quizSubjectTemplate extends questionClass {
                         questionStore.setDifficulty("Difficult");
                         break;
                 }
+                //picks a random question within the chosen difficulty
                 switch (rand_question) {
                     case 1:
                         questionStore.setQuestion("Q1");
@@ -240,29 +232,35 @@ public class quizSubjectTemplate extends questionClass {
         ans.add(second);
         ans.add(third);
         ans.add(fourth);
+
+
         first.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().removeAll();
                 frame.revalidate();
                 frame.repaint();
+
                 if (isTimed) {
                     if (first.getText().equals(questionStore.getQuestionAnswer())) {
-                        timedResults++;
+                        Results++;
+                        //checks if the result is correct
                     } questionMover(frame, screenSize);
+                    //moves to the next question
 
 
                 } else if (isRandom) {
                     if (first.getText().equals(questionStore.getQuestionAnswer())) {
-                        randomResults++;
+                        Results++;
                     }
-                    // show results for Random
-                    resultsInfo.showResults(frame, screenSize, Category, randomResults, 1);
+                    // show results for Random as there is only one question
+                    resultsInfo.showResults(frame, screenSize, Category, Results, 1);
 
 
                 } else if (isLeveled) {
                     if (first.getText().equals(questionStore.getQuestionAnswer())) {
-                        leveledResults++;
+                        Results++;
                     }
+                    // Moves to second question if first question is answered
                     if (questionStore.getQuestion().equals("Q1")) {
                         questionStore.setQuestion("Q2");
                         questionStore.retrieveQuestion();
@@ -270,7 +268,7 @@ public class quizSubjectTemplate extends questionClass {
 
                     } else if (questionStore.getQuestion().equals("Q2")) {
                         //show results for levels
-                        resultsInfo.showResults(frame, screenSize, Category, leveledResults, 2);
+                        resultsInfo.showResults(frame, screenSize, Category, Results, 2);
                     }
                 }
 
@@ -287,20 +285,20 @@ public class quizSubjectTemplate extends questionClass {
                 frame.repaint();
                 if (isTimed) {
                     if (second.getText().equals(questionStore.getQuestionAnswer())) {
-                        timedResults++;
+                        Results++;
                     }questionMover(frame, screenSize);
 
 
                 } else if (isRandom) {
                     if (second.getText().equals(questionStore.getQuestionAnswer())) {
-                        randomResults++;
+                        Results++;
                     }
                     // show results for Random
-                    resultsInfo.showResults(frame, screenSize, Category, randomResults, 1);
+                    resultsInfo.showResults(frame, screenSize, Category, Results, 1);
 
                 } else if (isLeveled) {
                     if (second.getText().equals(questionStore.getQuestionAnswer())) {
-                        leveledResults++;
+                        Results++;
                     }
                     if (questionStore.getQuestion().equals("Q1")) {
                         questionStore.setQuestion("Q2");
@@ -308,7 +306,7 @@ public class quizSubjectTemplate extends questionClass {
                         showFrame(frame, screenSize);
                     } else if (questionStore.getQuestion().equals("Q2")) {
                         //show results for levels
-                        resultsInfo.showResults(frame, screenSize, Category, leveledResults, 2);
+                        resultsInfo.showResults(frame, screenSize, Category, Results, 2);
                     }
                 }
 
@@ -325,20 +323,20 @@ public class quizSubjectTemplate extends questionClass {
                 frame.repaint();
                 if (isTimed) {
                     if (third.getText().equals(questionStore.getQuestionAnswer())) {
-                        timedResults++;
+                        Results++;
                     }questionMover(frame, screenSize);
 
 
                 } else if (isRandom) {
                     if (third.getText().equals(questionStore.getQuestionAnswer())) {
-                        randomResults++;
+                        Results++;
                     }// show results for Random
-                    resultsInfo.showResults(frame, screenSize, Category, randomResults, 1);
+                    resultsInfo.showResults(frame, screenSize, Category, Results, 1);
 
 
                 } else if (isLeveled) {
                     if (third.getText().equals(questionStore.getQuestionAnswer())) {
-                        leveledResults++;
+                        Results++;
                     }
                     if (questionStore.getQuestion().equals("Q1")) {
                         questionStore.setQuestion("Q2");
@@ -346,7 +344,7 @@ public class quizSubjectTemplate extends questionClass {
                         showFrame(frame, screenSize);
                     } else if (questionStore.getQuestion().equals("Q2")) {
                         //show results for levels
-                        resultsInfo.showResults(frame, screenSize, Category, leveledResults, 2);
+                        resultsInfo.showResults(frame, screenSize, Category, Results, 2);
 
                     }
                 }
@@ -364,20 +362,20 @@ public class quizSubjectTemplate extends questionClass {
                 frame.repaint();
                 if (isTimed) {
                     if (fourth.getText().equals(questionStore.getQuestionAnswer())) {
-                        timedResults++;
+                        Results++;
                     }
                     questionMover(frame, screenSize);
 
 
                 } else if (isRandom) {
                     if (fourth.getText().equals(questionStore.getQuestionAnswer())) {
-                        randomResults++;
+                        Results++;
                     }// show results for Random
-                    resultsInfo.showResults(frame, screenSize, Category, randomResults, 1);
+                    resultsInfo.showResults(frame, screenSize, Category, Results, 1);
 
                 } else if (isLeveled) {
                     if (fourth.getText().equals(questionStore.getQuestionAnswer())) {
-                        leveledResults++;
+                        Results++;
                     }
                     if (questionStore.getQuestion().equals("Q1")) {
                         questionStore.setQuestion("Q2");
@@ -386,7 +384,7 @@ public class quizSubjectTemplate extends questionClass {
 
                     } else if (questionStore.getQuestion().equals("Q2")) {
                         //show results for levels
-                        resultsInfo.showResults(frame, screenSize, Category, leveledResults, 2);
+                        resultsInfo.showResults(frame, screenSize, Category, Results, 2);
                     }
                 }
 
@@ -408,6 +406,7 @@ public class quizSubjectTemplate extends questionClass {
 
     }
     public void level_choice(JFrame frame, Dimension screenSize) {
+        //frame that allows the user to choose a difficulty
         int screen_width = (int) screenSize.getWidth();
         int screen_height = (int) screenSize.getHeight();
         Font f1 = new Font(Font.DIALOG, Font.BOLD, 18);
@@ -430,6 +429,7 @@ public class quizSubjectTemplate extends questionClass {
                 frame.getContentPane().removeAll();
                 frame.revalidate();
                 frame.repaint();
+                //sets the right information for the question class to find the question
                 questionStore.setDifficulty("Easy");
                 questionStore.setQuestion("Q1");
                 questionStore.retrieveQuestion();
@@ -512,6 +512,8 @@ public class quizSubjectTemplate extends questionClass {
 
     }
     public void questionMover(JFrame frame, Dimension screenSize) {
+        // for timed mode
+        // moves question to the next question while the user has not completed the quiz
         if (questionStore.getDifficulty().equals("Easy")) {
             if (questionStore.getQuestion().equals("Q1")) {
                 questionStore.setQuestion("Q2");
@@ -542,17 +544,20 @@ public class quizSubjectTemplate extends questionClass {
                 questionStore.retrieveQuestion();
                 showFrame(frame, screenSize);
             } else {
+                //timer is stopped
                 isTimed = false;
+                // formats the timed to be displayed in the results class
                 establishTimer(frame, screenSize);
             }
         }
     }
     public void establishTimer (JFrame frame, Dimension screenSize){
         Instant endTime = Instant.now(); // stops the stopwatch
-        Duration timeElapsed = Duration.between(startTime, endTime);
+        Duration timeElapsed = Duration.between(startTime, endTime); // calculates time taken
 
         Results timed = new Results( Category, "Difficulty", Mode,"Question",titleBg, runningBg, resultsBg, borderHex, mainButtonBgHex, alternateButtonBgHex, 6, 6, timeElapsed);
-        timed.showResults(frame, screenSize, Category, timedResults, 6);
+        timed.showResults(frame, screenSize, Category, Results, 6);
+        //special results constructor that feeds time taken into the results class
 
     }
 }
