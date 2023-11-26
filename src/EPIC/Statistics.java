@@ -20,13 +20,11 @@ public class Statistics {
                 String[] words = line.split(",");
                 if (words.length > 0 && words[0].equals(username)) {
                     usernameFound = true;
-                    System.out.println("username found");
-                    //writer.write(line + System.lineSeparator());
                 }
                 if (usernameFound && words.length > 0 && words[0].equals("scores")) {
+                    //rewrites line with score added at the end
                     line += "," + score;
                     usernameFound = false;
-                    System.out.println("score added");
                 }
                 writer.write(line + System.lineSeparator());
             }
@@ -36,7 +34,8 @@ public class Statistics {
 
         try (BufferedReader tempReader = new BufferedReader(new FileReader("src//EPIC//ScoresTemp.txt"));
              BufferedWriter mainWriter = new BufferedWriter(new FileWriter("src//EPIC//Scores.txt"))) {
-
+            // updates the main scores file with the new info in scores temp file
+            // rewrites everyline
             String line;
             while ((line = tempReader.readLine()) != null) {
                 mainWriter.write(line + System.lineSeparator());
@@ -102,24 +101,22 @@ public class Statistics {
 
     }
     public  int calculateMedian() {
-        int[] scoreList = new int[0];
-        int length = 0;
-        int midpoint = 0;
         int median = 0;
-        try{
+        try {
             BufferedReader reader = new BufferedReader(new FileReader("src//EPIC//Scores.txt"));
             String line = "";
             boolean usernameFound = false;
 
-            while( (line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null) {
+                //finds current username
                 String[] words = line.split(",");
-                if(words[0].equals(username)){
+                if (words[0].equals(username)) {
                     usernameFound = true;
                 }
-                if ((usernameFound) && words[0].equals("scores")){
-                    int[] tempScoreList = new int[words.length-1];
-                    for (int i = 1; i < words.length -1; i++){
-                        tempScoreList[i-1] = Integer.valueOf(words[i]);
+                if ((usernameFound) && words[0].equals("scores")) {
+                    int[] tempScoreList = new int[words.length - 1];
+                    for (int i = 1; i < words.length - 1; i++) {
+                        tempScoreList[i - 1] = Integer.valueOf(words[i]);
                     }
                     // sort scores in ascending order
                     for (int i = 0; i < tempScoreList.length - 1; i++) {
@@ -133,21 +130,22 @@ public class Statistics {
                         }
                     }
                     // get the median
-                    length = tempScoreList.length;
-                    if (length == 0){
+                    int length = tempScoreList.length;
+                    if (length == 0) {
                         return -1;
                     }
-                    midpoint = length/2;
+                    int midpoint = length / 2;
                     median = tempScoreList[midpoint];
 
 
                 }
             }
 
-        } catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Error handling files");
         }
-        return median;
+
+        return  median;
     }
     public  double calculateStandardDeviation(){
         double mean = calculateMean();
@@ -158,6 +156,7 @@ public class Statistics {
             String line = "";
             boolean usernameFound = false;
             while ((line = reader.readLine()) != null){
+                //finds current username
                 String[] words = line.split(",");
                 if (words[0].equals(username)){
                     usernameFound = true;
@@ -165,6 +164,7 @@ public class Statistics {
                 if ((usernameFound) && words[0].equals("scores")){
                     for(int i = 1; i < words.length; i++){
                         score = (Integer.valueOf(words[i]));
+                        /// calculates standard dec
                         squareDifferenceMean += (score - mean) * (score - mean);
 
                     }
